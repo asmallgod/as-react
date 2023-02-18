@@ -1,5 +1,4 @@
 import { Action } from 'shared/ReactTypes';
-import { Update } from './fiberFlags';
 
 export interface Update<State> {
 	action: Action<State>;
