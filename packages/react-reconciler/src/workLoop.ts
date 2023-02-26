@@ -33,16 +33,19 @@ function markUpdateFromFiberToRoot(fiber: FiberNode) {
 function renderRoot(root: FiberRootNode) {
 	// 初始化
 	prepareRefreshStack(root);
-
 	do {
 		try {
 			workLoop();
 			break;
 		} catch (e) {
-			console.warn('WorkLoop发生错误', e);
+			if (__DEV__) {
+				console.warn('WorkLoop发生错误', e);
+			}
 			workInProgress = null;
 		}
 	} while (true);
+
+	// root.current.alternate;
 }
 
 function workLoop() {
